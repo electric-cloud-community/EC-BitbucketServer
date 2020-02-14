@@ -226,7 +226,7 @@ class ECBitbucketServerRESTClient {
         return retval
     }
 
-    /** Generated code for the endpoint /rest/api/1.0/projects/{{projectKey}}/repos/{{repositorySlug}}/pull-requests/{{pullRequestId}}/merge?{{version}}
+    /** Generated code for the endpoint /rest/api/1.0/projects/{{projectKey}}/repos/{{repositorySlug}}/pull-requests/{{pullRequestId}}/merge?version={{version}}
     * Do not change this code
     * projectKey: in path
     * repositorySlug: in path
@@ -237,7 +237,7 @@ class ECBitbucketServerRESTClient {
         this.method = 'mergePullRequest'
         this.methodParameters = params
 
-        String uri = '/rest/api/1.0/projects/{{projectKey}}/repos/{{repositorySlug}}/pull-requests/{{pullRequestId}}/merge?{{version}}'
+        String uri = '/rest/api/1.0/projects/{{projectKey}}/repos/{{repositorySlug}}/pull-requests/{{pullRequestId}}/merge?version={{version}}'
         log.debug("URI template $uri")
         uri = renderOneLineTemplate(uri, params)
 
@@ -256,7 +256,7 @@ class ECBitbucketServerRESTClient {
         Map headers = [:]
         return makeRequest('POST', uri, query, payload, headers)
     }
-// DO NOT EDIT THIS BLOCK === rest client ends, checksum: 4a99a8ff4eb88d515924ce28a5e3f835 ===
+// DO NOT EDIT THIS BLOCK === rest client ends, checksum: 7032762f1cebbbd0880e80613c13965e ===
     /**
      * Use this method for any request pre-processing: adding custom headers, binary files, etc.
      */

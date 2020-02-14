@@ -38,7 +38,7 @@
     <type>entry</type>
     <property>version</property>
     <required>1</required>
-    <documentation>Version of the bitbucket pull pequest.</documentation>
+    <documentation>Version of the bitbucket pull request.</documentation>
     <label>Pull Request version:</label>
     <value>-1</value>
   </formElement>
