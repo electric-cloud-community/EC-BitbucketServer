@@ -27,11 +27,11 @@ class BitbucketServer extends FlowPlugin {
         Map requestParams = p.asMap
         restParams.put('projectKey', requestParams.get('projectKey'))
         restParams.put('pullRequestId', requestParams.get('pullRequestId'))
+        restParams.put('repositorySlug', requestParams.get('repositorySlug'))
         restParams.put('version', requestParams.get('version'))
 
         Object response = rest.mergePullRequest(restParams)
         log.info "Got response from server: $response"
-        log.debug("Response: " + response.response())
         
         // Saving issue as a JSON
         def jsonResultStr = JsonOutput.toJson(response)

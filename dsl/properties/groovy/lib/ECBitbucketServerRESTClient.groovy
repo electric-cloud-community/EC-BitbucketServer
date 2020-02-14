@@ -229,6 +229,7 @@ class ECBitbucketServerRESTClient {
     /** Generated code for the endpoint /rest/api/1.0/projects/{{projectKey}}/repos/{{repositorySlug}}/pull-requests/{{pullRequestId}}/merge?{{version}}
     * Do not change this code
     * projectKey: in path
+    * repositorySlug: in path
     * pullRequestId: in path
     * version: in path
     */
@@ -255,7 +256,7 @@ class ECBitbucketServerRESTClient {
         Map headers = [:]
         return makeRequest('POST', uri, query, payload, headers)
     }
-// DO NOT EDIT THIS BLOCK === rest client ends, checksum: c222ec083caca99de963990d616a28d8 ===
+// DO NOT EDIT THIS BLOCK === rest client ends, checksum: 4a99a8ff4eb88d515924ce28a5e3f835 ===
     /**
      * Use this method for any request pre-processing: adding custom headers, binary files, etc.
      */

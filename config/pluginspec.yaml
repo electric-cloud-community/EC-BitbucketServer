@@ -3,7 +3,7 @@ pluginInfo:
   # Feel free to change it
   # Call flowpdk showdoc pluginspec to see the list of available fields and their description
   pluginName: 'EC-BitbucketServer'
-  version: '0.1.2'
+  version: '0.1.3'
   description: 'Bitbucket Server On Premises integration'
   author: 'Shaohua Wen <swen@cloudbees.com>'
   supportUrl: 'none'
@@ -55,6 +55,8 @@ procedures:
     required: true
     type: entry
     label: Repository Slug
+    restParamInfo:
+      in: path
   -
     name: pullRequestId
     documentation: Id of the bitbucket pull request.
