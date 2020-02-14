@@ -36,7 +36,7 @@ class BitbucketServer extends FlowPlugin {
         def jsonResultStr = JsonOutput.toJson(response)
         log.debug("Merge Response JSON: " + jsonResultStr)
     
-        sr.setOutcomeProperty('BitBucketMergeResponse', jsonResultStr)
+        sr.setOutputParameter('BitBucketMergeResponse', jsonResultStr)
         sr.apply()
     }
 /**
