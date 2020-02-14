@@ -3,7 +3,7 @@ pluginInfo:
   # Feel free to change it
   # Call flowpdk showdoc pluginspec to see the list of available fields and their description
   pluginName: 'EC-BitbucketServer'
-  version: '0.1.0'
+  version: '0.1.1'
   description: 'Bitbucket Server On Premises integration'
   author: 'Shaohua Wen <swen@cloudbees.com>'
   supportUrl: 'none'
