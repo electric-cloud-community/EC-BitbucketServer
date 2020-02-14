@@ -1,0 +1,119 @@
+<!--
+    This form is generated automatically from the parameters pluginspec.
+    Please not not edit this file manually as it will be regenerated.
+-->
+
+<editor>
+  <help>/commander/pages/@PLUGIN_NAME@/help?s=Administration&amp;ss=Plugins#CreateConfiguration</help>
+  <formElement>
+    <type>entry</type>
+    <property>config</property>
+    <required>1</required>
+    <documentation>Unique name for the configuration</documentation>
+    <label>Configuration Name:</label>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>desc</property>
+    <required>0</required>
+    <documentation>Configuration description</documentation>
+    <label>Description:</label>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>endpoint</property>
+    <required>1</required>
+    <htmlDocumentation>Link to the Bitbucket site</htmlDocumentation>
+    <label>REST Endpoint:</label>
+  </formElement>
+  <formElement>
+    <type>select</type>
+    <property>authScheme</property>
+    <required>1</required>
+    <documentation>Authorization scheme for the third-party connection.</documentation>
+    <label>Auth Scheme:</label>
+    <option>
+      <name>Anonymous</name>
+      <value>anonymous</value>
+    </option>
+    <option>
+      <name>Basic</name>
+      <value>basic</value>
+    </option>
+    <option>
+      <name>Bearer Token</name>
+      <value>bearerToken</value>
+    </option>
+  </formElement>
+  <formElement>
+    <type>credential</type>
+    <property>basic_credential</property>
+    <required>0</required>
+    <htmlDocumentation>Please provide username and password/token to use for the connection.</htmlDocumentation>
+    <label>Basic/Token credential:</label>
+    <attachedAsParameterToStep>createConfiguration,checkConnectionGeneric</attachedAsParameterToStep>
+    <condition>${authScheme} == "basic"</condition>
+    <dependsOn>authScheme</dependsOn>
+    <passwordLabel>Password/Token</passwordLabel>
+    <userNameLabel>User Name</userNameLabel>
+  </formElement>
+  <formElement>
+    <type>credential</type>
+    <property>bearer_credential</property>
+    <required>0</required>
+    <htmlDocumentation>Token to connect to...</htmlDocumentation>
+    <label>Bearer token:</label>
+    <attachedAsParameterToStep>createConfiguration,checkConnectionGeneric</attachedAsParameterToStep>
+    <condition>${authScheme} == "bearerToken"</condition>
+    <credentialType>secret</credentialType>
+    <dependsOn>authScheme</dependsOn>
+    <passwordLabel>Bearer token</passwordLabel>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>httpProxyUrl</property>
+    <required>0</required>
+    <documentation>A proxy server URL that should be used for connections.</documentation>
+    <label>HTTP Proxy:</label>
+  </formElement>
+  <formElement>
+    <type>credential</type>
+    <property>proxy_credential</property>
+    <required>0</required>
+    <documentation>Username and password for proxy.</documentation>
+    <label>Proxy Authorization:</label>
+    <attachedAsParameterToStep>createConfiguration,checkConnectionGeneric</attachedAsParameterToStep>
+    <passwordLabel>Proxy password</passwordLabel>
+    <retypePasswordLabel>Retype Proxy Password</retypePasswordLabel>
+    <userNameLabel>Proxy Username</userNameLabel>
+  </formElement>
+  <formElement>
+    <type>checkbox</type>
+    <property>checkConnection</property>
+    <documentation>If checked, a connection endpoint and credentials will be tested before save. The configuration will not be saved if the test fails.</documentation>
+    <label>Check Connection?:</label>
+    <checkedValue>true</checkedValue>
+    <initiallyChecked>1</initiallyChecked>
+    <uncheckedValue>false</uncheckedValue>
+  </formElement>
+  <formElement>
+    <type>select</type>
+    <property>debugLevel</property>
+    <required>0</required>
+    <documentation>This option sets debug level for logs. If info is selected, only summary information will be shown, for debug, there will be some debug information and for trace the whole requests and responses will be shown.</documentation>
+    <label>Debug Level:</label>
+    <option>
+      <name>Info</name>
+      <value>0</value>
+    </option>
+    <option>
+      <name>Debug</name>
+      <value>1</value>
+    </option>
+    <option>
+      <name>Trace</name>
+      <value>2</value>
+    </option>
+    <value>0</value>
+  </formElement>
+</editor>

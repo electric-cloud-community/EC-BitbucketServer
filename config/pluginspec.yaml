@@ -1,0 +1,82 @@
+pluginInfo:
+  # This is default sample specification
+  # Feel free to change it
+  # Call flowpdk showdoc pluginspec to see the list of available fields and their description
+  pluginName: 'EC-BitbucketServer'
+  version: '0.1.0'
+  description: 'Bitbucket Server On Premises integration'
+  author: 'Shaohua Wen <swen@cloudbees.com>'
+  supportUrl: 'none'
+  category: 'Utilities'
+  shell: 'ec-groovy'
+
+# REST-backed plugin configuration
+configuration:
+  checkConnection: true
+  parameters:
+  restConfigInfo:
+    endpointDescription: Link to the Bitbucket site
+    endpointLabel: REST Endpoint
+    checkConnectionUri: /rest/api/1.0/projects
+    headers: {Accept: "application/json"}
+    authSchemes:
+      bearer:
+        passwordLabel: 'Bearer token'
+        description: 'Token to connect to...'
+      basic:
+        userNameLabel: User Name
+        passwordLabel: Password/Token
+        description: Please provide username and password/token to use for the connection.
+        credentialLabel: Basic/Token credential
+      anonymous:
+        checkConnectionUri: /rest/api/1.0/projects
+  customCheckConnection: false
+  hasDebugLevel: true
+  hasProxySupport: true
+
+procedures:
+-
+  name: 'Merge Pull Request'
+  description: 'Test whether a pull request can be merged.'
+  hasConfig: true
+  shell: 'ec-groovy'
+  parameters:
+  -
+    name: projectKey
+    documentation: Key of the bitbucket project.
+    required: true
+    type: entry
+    label: Project Key
+    restParamInfo:
+      in: path
+  -
+    name: repositorySlug
+    documentation: Slug of the bitbucket repository.
+    required: true
+    type: entry
+    label: Repository Slug
+  -
+    name: pullRequestId
+    documentation: Id of the bitbucket pull request.
+    required: true
+    type: entry
+    label: Pull Request Id
+    restParamInfo:
+      in: path
+  -
+    name: version
+    documentation: Version of the bitbucket pull pequest.
+    required: true
+    type: entry
+    label: Pull Request version
+    value: -1
+    restParamInfo:
+      in: path
+  outputParameters:
+  -
+    name: BitBucketMergeResponse
+    description: the response of the merge.
+  restProcedureInfo:
+    url: '/rest/api/1.0/projects/{{projectKey}}/repos/{{repositorySlug}}/pull-requests/{{pullRequestId}}/merge?{{version}}'
+    methodName: 'mergePullRequest'
+    httpMethod: 'POST'

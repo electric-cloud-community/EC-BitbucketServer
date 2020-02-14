@@ -1,0 +1,38 @@
+apply plugin: 'groovy'
+
+repositories{
+    mavenCentral()
+    flatDir {
+        dirs 'agent/deps/libs'
+    }
+}
+
+dependencies {
+    implementation 'org.codehaus.groovy:groovy-all:2.4.13'
+
+    // Change the version if you have upgraded the groovy library
+    implementation 'com.electriccloud.plugins:flowpdf-groovy-lib:1.0.1.0'
+}
+
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs = ['dsl/properties/groovy/lib']
+        }
+    }
+}
+
+// Use this task to include third-party dependencies into to agent folder
+task copyDependencies(type: Copy) {
+    outputs.upToDateWhen { false }
+
+    from configurations.runtimeClasspath {
+        // Dependencies already included into the COMMANDER_HOME/utils/langs
+        exclude group: 'org.codehaus.groovy', module: 'groovy-all'
+        exclude group: "org.apache.commons", module: 'commons-lang'
+        exclude group: "commons-collections", module: 'commons-collections'
+        exclude group: "com.electriccloud.plugins", module: 'flowpdf-groovy-lib'
+    }
+    into 'agent/deps/libs'
+}
