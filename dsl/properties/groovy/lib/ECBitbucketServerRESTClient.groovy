@@ -226,22 +226,24 @@ class ECBitbucketServerRESTClient {
         return retval
     }
 
-    /** Generated code for the endpoint /rest/api/1.0/projects/{{projectKey}}/repos/{{repositorySlug}}/pull-requests/{{pullRequestId}}/merge?version={{version}}
+    /** Generated code for the endpoint /rest/api/1.0/projects/{{projectKey}}/repos/{{repositorySlug}}/pull-requests/{{pullRequestId}}/merge
     * Do not change this code
     * projectKey: in path
     * repositorySlug: in path
     * pullRequestId: in path
-    * version: in path
+    * version: in query
     */
     def mergePullRequest(Map<String, String> params) {
         this.method = 'mergePullRequest'
         this.methodParameters = params
 
-        String uri = '/rest/api/1.0/projects/{{projectKey}}/repos/{{repositorySlug}}/pull-requests/{{pullRequestId}}/merge?version={{version}}'
+        String uri = '/rest/api/1.0/projects/{{projectKey}}/repos/{{repositorySlug}}/pull-requests/{{pullRequestId}}/merge'
         log.debug("URI template $uri")
         uri = renderOneLineTemplate(uri, params)
 
         Map query = [:]
+
+        query.put('version', params.get('version'))
 
         log.debug "Query: ${query}"
 
@@ -256,7 +258,7 @@ class ECBitbucketServerRESTClient {
         Map headers = [:]
         return makeRequest('POST', uri, query, payload, headers)
     }
-// DO NOT EDIT THIS BLOCK === rest client ends, checksum: 7032762f1cebbbd0880e80613c13965e ===
+// DO NOT EDIT THIS BLOCK === rest client ends, checksum: d2f69329eb4be497af0a54c13f4b4273 ===
     /**
      * Use this method for any request pre-processing: adding custom headers, binary files, etc.
      */

@@ -3,7 +3,7 @@ pluginInfo:
   # Feel free to change it
   # Call flowpdk showdoc pluginspec to see the list of available fields and their description
   pluginName: 'EC-BitbucketServer'
-  version: '0.1.4'
+  version: '0.1.5'
   description: 'Bitbucket Server On Premises integration'
   author: 'Shaohua Wen <swen@cloudbees.com>'
   supportUrl: 'none'
@@ -73,12 +73,12 @@ procedures:
     label: Pull Request version
     value: -1
     restParamInfo:
-      in: path
+      in: query
   outputParameters:
   -
     name: BitBucketMergeResponse
     description: the response of the merge.
   restProcedureInfo:
-    url: '/rest/api/1.0/projects/{{projectKey}}/repos/{{repositorySlug}}/pull-requests/{{pullRequestId}}/merge?version={{version}}'
+    url: '/rest/api/1.0/projects/{{projectKey}}/repos/{{repositorySlug}}/pull-requests/{{pullRequestId}}/merge'
     methodName: 'mergePullRequest'
     httpMethod: 'POST'
