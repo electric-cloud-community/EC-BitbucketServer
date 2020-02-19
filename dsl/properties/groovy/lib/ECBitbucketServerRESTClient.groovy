@@ -263,6 +263,7 @@ class ECBitbucketServerRESTClient {
      * Use this method for any request pre-processing: adding custom headers, binary files, etc.
      */
     HTTPRequest augmentRequest(HTTPRequest request) {
+        request.setHeader('X-Atlassian-Token', 'no-check')
         return request
     }
 

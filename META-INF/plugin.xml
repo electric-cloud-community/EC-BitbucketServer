@@ -6,7 +6,7 @@
   <category>Utilities</category>
   <description>Bitbucket Server On Premises integration</description>
   <configure>ec_config</configure>
-  <version>0.1.5</version>
+  <version>0.1.6</version>
   <authorUrl>none</authorUrl>
   <help>help.xml</help>
   <depends min='1.4.1'>EC-PluginManager</depends>
