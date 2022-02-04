@@ -2,4 +2,4 @@
 
 Supported features:
 * Merge PR
-* webhook support for push and pull request
+* webhook support for push and pull request (not tested)
