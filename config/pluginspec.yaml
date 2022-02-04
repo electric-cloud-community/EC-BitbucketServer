@@ -3,7 +3,7 @@ pluginInfo:
   # Feel free to change it
   # Call flowpdk showdoc pluginspec to see the list of available fields and their description
   pluginName: 'EC-BitbucketServer'
-  version: '0.1.6'
+  version: '0.2.0'
   description: 'Bitbucket Server On Premises integration'
   author: 'Shaohua Wen <swen@cloudbees.com>'
   supportUrl: 'none'
@@ -33,6 +33,94 @@ configuration:
   customCheckConnection: false
   hasDebugLevel: true
   hasProxySupport: true
+
+webhook:
+  secretRequired: false
+  displayName: EC-BitbucketServer
+  parameters:
+    - name: repositories
+      label: Repositories
+      htmlDocumentation: |
+        List of repositories (projectName/repositoryName), separated by a newline.
+        Examples: <b>'myproj/testrepo'</b>, <b>'myproj/testrepo\nmyproj/testrepo2'</b>.
+      documentation: |
+        List of repositories (projectName/repositoryName), separated by a newline.
+        Examples: 'myproj/testrepo', 'myproj/testrepo\nmyproj/testrepo2'.
+      type: textarea
+      required: true
+    - name: includeBranches
+      label: Include Branches
+      value: main
+      documentation: |
+        List of branch names or patterns, separated by a comma.
+        Incoming events will be discarded if not relate to one of the specified branches.
+        Leave empty to process events for all branches except ones specified in the "Exclude Branches" parameter.
+      type: textarea
+    - name: excludeBranches
+      label: Exclude Branches
+      type: textarea
+      documentation: |
+        List of branch names or patterns, separated by a comma.
+        Incoming events will be discarded if relate to one of the specified branches.
+        Leave empty to process events for all branches or the ones specified in the "Include Branches" parameter.
+      required: false
+    - name: pushEvent
+      label: Process Push Events?
+      type: checkbox
+      documentation: |
+        Check this if you want trigger to be run when the new commit appears in one of the monitored branches.
+      value: false
+      checkedValue: true
+      uncheckedValue: false
+      initiallyChecked: 1
+    - name: prEvent
+      label: Process Pull Request Events?
+      documentation: |
+        Check this if you want the trigger to be run when the Pull Request event occurs.
+      type: checkbox
+      required: false
+      value: false
+      checkedValue: true
+      uncheckedValue: false
+      initiallyChecked: 0
+    - name: includePrActions
+      label: Include PR Actions
+      type: textarea
+      dependsOn: prEvent
+      condition: ${prEvent} == "true"
+      value: 'merged'
+      documentation: |
+        List of comma-separated values. Run trigger when one of the following actions has occurred.
+        Can be one of:
+        'opened',
+        'modifed',
+        'merged',
+        'declined',
+        'deleted',
+        'reviewer:approved',
+        'reviewer:unapproved',
+        'reviewer:updated',
+        'reviewer:needs_work',
+        'comment:added',
+        'comment:edited',
+        'comment:deleted'
+      htmlDocumentation: |
+        List of comma-separated values. Run trigger when one of the following actions has occurred.
+        Can be one of:
+        <ul>
+        <li>opened</li>
+        <li>modifed</li>
+        <li>merged</li>
+        <li>declined</li>
+        <li>deleted</li>
+        <li>reviewer:approved</li>
+        <li>reviewer:unapproved</li>
+        <li>reviewer:updated</li>
+        <li>reviewer:needs_work</li>
+        <li>comment:added</li>
+        <li>comment:edited</li>
+        <li>comment:deleted</li>
+        </ul>
 
 procedures:
 -

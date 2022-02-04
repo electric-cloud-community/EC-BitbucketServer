@@ -1,4 +1,4 @@
-// DO NOT EDIT THIS BLOCK === rest client imports starts ===
+// DO NOT EDIT THIS BLOCK BELOW=== rest client imports starts ===
 import com.cloudbees.flowpdf.*
 import com.cloudbees.flowpdf.client.HTTPRequest
 import com.cloudbees.flowpdf.client.REST
@@ -14,9 +14,9 @@ import org.apache.http.HttpResponse
 import sun.reflect.generics.reflectiveObjects.NotImplementedException
 import org.apache.http.auth.AuthScope
 import org.apache.http.auth.UsernamePasswordCredentials
-// DO NOT EDIT THIS BLOCK === rest client imports ends, checksum: bd43b259ee4d532c8bd07cf2f708baba ===
+// DO NOT EDIT THIS BLOCK ABOVE ^^^=== rest client imports ends, checksum: bd43b259ee4d532c8bd07cf2f708baba ===
 // Place for the custom user imports, e.g. import groovy.xml.*
-// DO NOT EDIT THIS BLOCK === rest client starts ===
+// DO NOT EDIT THIS BLOCK BELOW=== rest client starts ===
 @InheritConstructors
 class InvalidRestClientException extends Exception {
 
@@ -258,7 +258,7 @@ class ECBitbucketServerRESTClient {
         Map headers = [:]
         return makeRequest('POST', uri, query, payload, headers)
     }
-// DO NOT EDIT THIS BLOCK === rest client ends, checksum: d2f69329eb4be497af0a54c13f4b4273 ===
+// DO NOT EDIT THIS BLOCK ABOVE ^^^=== rest client ends, checksum: d2f69329eb4be497af0a54c13f4b4273 ===
     /**
      * Use this method for any request pre-processing: adding custom headers, binary files, etc.
      */
