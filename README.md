@@ -1,3 +1,5 @@
 ## EC-BitbucketServer
 
-Please fill this readme file with some meaningful information about your plugin.
+Supported features:
+* Merge PR
+* webhook support for push and pull request
